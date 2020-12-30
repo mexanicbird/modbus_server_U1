@@ -1,9 +1,14 @@
 """Импортируем библиотеки"""
 from termcolor import colored
+import time
+
+"""Импортируем файлы"""
 #import modbus_Slave_001
 #import modbus_Slave_002
+import MYsql
+import send_to_site
 import static_var
-import time
+
 
 """функция вызова результатов в терминал"""
 def print_Data_001(i):
@@ -20,11 +25,11 @@ def print_Data_001(i):
     #modbus_Slave_001.S1_h2.printer()
     #modbus_Slave_001.S1_h2.printer()
     #print(' ')
-    #modbus_Slave_002.S1_t1.printer()
-    #modbus_Slave_002.S1_t2.printer()
-    #modbus_Slave_002.S1_h1.printer()
-    #modbus_Slave_002.S1_h2.printer()
-    #modbus_Slave_002.S1_h2.printer()
+    #modbus_Slave_002.S2_t1.printer()
+    #modbus_Slave_002.S2_t2.printer()
+    #modbus_Slave_002.S2_h1.printer()
+    #modbus_Slave_002.S2_h2.printer()
+    #modbus_Slave_002.S2_h2.printer()
     #print(' ')
     print(colored("Result №  " + str(i) + ":", 'red', attrs=['reverse', 'blink']))
     time.sleep(0.3)

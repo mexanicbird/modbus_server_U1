@@ -3,6 +3,8 @@ from termcolor import colored
 import modbus_tk.defines as cst
 import modbus_tk.modbus_tcp as modbus_tcp
 import datetime
+
+"""функции времени и даты"""
 dt = datetime.time()
 a = datetime.datetime.now()
 
@@ -26,9 +28,13 @@ class Analog_val(object):
 
     """метод принтера значений в строку"""
     def printer(self):
-
         print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " " + str(self.data2) + " "
-                      + str(self.data3) + " " + str(self.data5) + " " + str(self.data6) + " ", 'yellow', ))
+                      + str(self.data3) + " " + str(self.data5) + " " + str(self.data6) + " ", 'blue', ))
+
+    """метод принтера значений в строку"""
+    def printer_short(self):
+        print(colored(str(self.name) + " " + str(self.val) + " ", 'blue', ))
+
 
 """функия опроса и заполнения экземпляров класса"""
 def loadA():

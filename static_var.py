@@ -1,6 +1,8 @@
 """Импортируем библиотеки"""
 from termcolor import colored
 import datetime
+
+"""функции времени и даты"""
 dt = datetime.time()
 a = datetime.datetime.now()
 
@@ -22,6 +24,11 @@ class Analog_val(object):
     def printer(self):
         print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " " + str(self.data2) + " "
                       + str(self.data3) + " " + str(self.data5) + " " + str(self.data6) + " ", 'yellow', ))
+
+    """метод принтера значений в строку"""
+    def printer_short(self):
+        print(colored(str(self.name) + " " + str(self.val) + " ", 'yellow', ))
+
 
 """опрос слейв устройства """
 def loadA():
