@@ -7,8 +7,8 @@ dt = datetime.time()
 a = datetime.datetime.now()
 
 """адресация и опрос подчиненного устройства"""
-master = modbus_tcp.TcpMaster(host="192.168.1.10", port=int(502))
-master.set_timeout(1.0)
+master1 = modbus_tcp.TcpMaster(host="192.168.1.10", port=int(502))
+master1.set_timeout(1.0)
 
 """Создаем класс аналоговой переменной"""
 class Analog_val(object):
@@ -35,15 +35,15 @@ def loadA():
     a = datetime.datetime.now()
     global S1_t1, S1_t2, S1_h1, S1_h2, S1_p1
     try:
-        t1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 0, 1)
+        t1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 0, 1)
         S1_t1 = Analog_val('S1_t1 =', t1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        t2 = master.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        t2 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S1_t2 = Analog_val('S1_t2 =', t2[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        h1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        h1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S1_h1 = Analog_val('S1_h1 =', h1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        h2 = master.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        h2 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S1_h2 = Analog_val('S1_h2 =', h2[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        p1 = master.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        p1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S1_p1 = Analog_val('S1_p1 =', p1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     except:
