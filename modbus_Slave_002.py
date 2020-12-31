@@ -29,7 +29,7 @@ class Analog_val(object):
     """метод принтера значений в строку"""
     def printer(self):
         print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " " + str(self.data2) + " "
-                      + str(self.data3) + " " + str(self.data5) + " " + str(self.data6) + " ", 'green', ))
+                      + str(self.data3) + " " + str(self.data4) + " " + str(self.data5) + " " + str(self.data6) + " ", 'green', ))
 
     """метод принтера значений в строку"""
     def printer_short(self):
