@@ -28,8 +28,9 @@ class Analog_val(object):
 
     """метод принтера значений в строку"""
     def printer(self):
-        print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " " + str(self.data2) + " "
-                      + str(self.data3) + " " + str(self.data4) + " " + str(self.data5) + " " + str(self.data6) + " ", 'blue', ))
+        print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " "
+                      + str(self.data2) + " " + str(self.data3) + " " + str(self.data4) + " " + str(self.data5) + " "
+                      + str(self.data6) + " ",'blue', ))
 
     """метод принтера значений в строку"""
     def printer_short(self):
@@ -53,13 +54,17 @@ def loadA():
         S1_p1 = Analog_val('S1_p1 =', p1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     except:
-        S1_t1 = Analog_val('S1_t1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S1_t2 = Analog_val('S1_t2 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S1_h1 = Analog_val('S1_h1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S1_h2 = Analog_val('S1_h2 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S1_p1 = Analog_val('S1_p1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S1_t1 = Analog_val('S1_t1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S1_t2 = Analog_val('S1_t2 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S1_h1 = Analog_val('S1_h1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S1_h2 = Analog_val('S1_h2 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S1_p1 = Analog_val('S1_p1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
-    return S1_t1, S1_t2, S1_h1, S1_h2, S1_p1
+    finally:
+
+        return S1_t1, S1_t2, S1_h1, S1_h2, S1_p1
+
+
 
 
 

@@ -2,10 +2,13 @@ import socket
 
 sock = socket.socket()
 sock.connect(('localhost', 9090))
-f = 123
-sock.send(str('f'))
+send_data_001 = 123
+sock.send(b"Hello!")
 
 data = sock.recv(1024)
 sock.close()
 
 print(data)
+
+
+#(b"Your data: " + udata.encode("utf-8")

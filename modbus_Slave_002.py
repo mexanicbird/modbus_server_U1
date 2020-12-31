@@ -53,10 +53,10 @@ def loadA():
         S2_p1 = Analog_val('S2_p1 =', p1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     except:
-        S2_t1 = Analog_val('S2_t1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S2_t2 = Analog_val('S2_t2 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S2_h1 = Analog_val('S2_h1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S2_h2 = Analog_val('S2_h2 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        S2_p1 = Analog_val('S2_p1 =', None, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S2_t1 = Analog_val('S2_t1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S2_t2 = Analog_val('S2_t2 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S2_h1 = Analog_val('S2_h1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S2_h2 = Analog_val('S2_h2 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
+        S2_p1 = Analog_val('S2_p1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     return S2_t1, S2_t2, S2_h1, S2_h2, S2_p1

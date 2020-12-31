@@ -31,6 +31,7 @@ class Analog_val(object):
 
 
 """опрос слейв устройства """
+
 def loadA():
     a = datetime.datetime.now()
     global SS1, SS2, SS3
@@ -49,3 +50,4 @@ def loadA():
 
     return SS1, SS2, SS3
 
+a1 = SS1.name
