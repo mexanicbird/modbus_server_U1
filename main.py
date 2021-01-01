@@ -7,10 +7,7 @@ import datetime
 import modbus_Slave_001
 import modbus_Slave_002
 import MYsql
-#import send_to_site
-import static_var
-
-
+import send_to_site
 
 """функция вызова результатов в терминал"""
 def print_Data_001(i):
@@ -39,20 +36,26 @@ def print_Data_001(i):
     modbus_Slave_002.S2_h2.printer()
     print(' ')
 
-    """запись в базу по условию 0 секунд точного времени"""
+    """запись в базу по условию 0 b 30 секунд точного времени"""
     if time_now.second == 0 or time_now.second == 30:
         MYsql.send_to_database()
+
+    """запись в базу по условию 15 b 45 секунд точного времени"""
+    if time_now.second == 15 or time_now.second == 45:
+        send_to_site.send_data_to_site()
+
+
+i = 0
+while True:
+    i = i + 1
+    print_Data_001(i)
     time.sleep(1)
 
 #i = 0
-#while i > 0:
+#for i in range(10000):
     #i = i + 1
     #print_Data_001(i)
-
-i = 0
-for i in range(1000):
-    i = i + 1
-    print_Data_001(i)
+    #time.sleep(1)
 
 
 
