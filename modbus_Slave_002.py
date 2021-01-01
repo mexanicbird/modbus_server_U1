@@ -8,9 +8,16 @@ import datetime
 dt = datetime.time()
 a = datetime.datetime.now()
 
+"""переменные для MYsql"""
+S2_t1_q = 0
+S2_t2_q = 0
+S2_h1_q = 0
+S2_h2_q = 0
+S2_p1_q = 0
+
 """адресация и опрос подчиненного устройства"""
-master2 = modbus_tcp.TcpMaster(host="192.168.1.11", port=int(502))
-master2.set_timeout(1.0)
+master1 = modbus_tcp.TcpMaster(host="192.168.1.10", port=int(502))
+master1.set_timeout(1.0)
 
 """Создаем класс аналоговой переменной"""
 class Analog_val(object):
@@ -28,8 +35,9 @@ class Analog_val(object):
 
     """метод принтера значений в строку"""
     def printer(self):
-        print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " " + str(self.data2) + " "
-                      + str(self.data3) + " " + str(self.data4) + " " + str(self.data5) + " " + str(self.data6) + " ", 'green', ))
+        print(colored(str(self.name) + " " + str(self.val) + " " + str(self.log) + " " + str(self.data1) + " "
+                      + str(self.data2) + " " + str(self.data3) + " " + str(self.data4) + " " + str(self.data5) + " "
+                      + str(self.data6) + " ",'green', ))
 
     """метод принтера значений в строку"""
     def printer_short(self):
@@ -39,17 +47,17 @@ class Analog_val(object):
 """функия опроса и заполнения экземпляров класса"""
 def loadA():
     a = datetime.datetime.now()
-    global S2_t1, S2_t2, S2_h1, S2_h2, S2_p1
+    global S2_t1, S2_t2, S2_h1, S2_h2, S2_p1, S2_t1_q, S2_t2_q, S2_h1_q, S2_h2_q, S2_p1_q
     try:
-        t1 = master2.execute(1, cst.READ_HOLDING_REGISTERS, 0, 1)
+        t1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 0, 1)
         S2_t1 = Analog_val('S2_t1 =', t1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        t2 = master2.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        t2 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S2_t2 = Analog_val('S2_t2 =', t2[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        h1 = master2.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        h1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S2_h1 = Analog_val('S2_h1 =', h1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        h2 = master2.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        h2 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S2_h2 = Analog_val('S2_h2 =', h2[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
-        p1 = master2.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
+        p1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 1, 1)
         S2_p1 = Analog_val('S2_p1 =', p1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     except:
@@ -59,4 +67,11 @@ def loadA():
         S2_h2 = Analog_val('S2_h2 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
         S2_p1 = Analog_val('S2_p1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
-    return S2_t1, S2_t2, S2_h1, S2_h2, S2_p1
+    finally:
+        S2_t1_q = S2_t1.val
+        S2_t2_q = S2_t2.val
+        S2_h1_q = S2_h1.val
+        S2_h2_q = S2_h2.val
+        S2_p1_q = S2_p1.val
+
+        return S2_t1, S2_t2, S2_h1, S2_h2, S2_p1, S2_t1_q, S2_t2_q, S2_h1_q, S2_h2_q, S2_p1_q

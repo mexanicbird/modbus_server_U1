@@ -8,6 +8,13 @@ import datetime
 dt = datetime.time()
 a = datetime.datetime.now()
 
+"""переменные для MYsql"""
+S1_t1_q = 0
+S1_t2_q = 0
+S1_h1_q = 0
+S1_h2_q = 0
+S1_p1_q = 0
+
 """адресация и опрос подчиненного устройства"""
 master1 = modbus_tcp.TcpMaster(host="192.168.1.10", port=int(502))
 master1.set_timeout(1.0)
@@ -40,7 +47,7 @@ class Analog_val(object):
 """функия опроса и заполнения экземпляров класса"""
 def loadA():
     a = datetime.datetime.now()
-    global S1_t1, S1_t2, S1_h1, S1_h2, S1_p1
+    global S1_t1, S1_t2, S1_h1, S1_h2, S1_p1, S1_t1_q, S1_t2_q, S1_h1_q, S1_h2_q, S1_p1_q
     try:
         t1 = master1.execute(1, cst.READ_HOLDING_REGISTERS, 0, 1)
         S1_t1 = Analog_val('S1_t1 =', t1[0], 1, a.day, a.month, a.year, a.hour, a.minute, a.second)
@@ -61,10 +68,11 @@ def loadA():
         S1_p1 = Analog_val('S1_p1 =', 0, 0, a.day, a.month, a.year, a.hour, a.minute, a.second)
 
     finally:
+        S1_t1_q = S1_t1.val
+        S1_t2_q = S1_t2.val
+        S1_h1_q = S1_h1.val
+        S1_h2_q = S1_h2.val
+        S1_p1_q = S1_p1.val
 
-        return S1_t1, S1_t2, S1_h1, S1_h2, S1_p1
-
-
-
-
+        return S1_t1, S1_t2, S1_h1, S1_h2, S1_p1, S1_t1_q, S1_t2_q, S1_h1_q, S1_h2_q, S1_p1_q
 

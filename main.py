@@ -22,13 +22,6 @@ def print_Data_001(i):
     print(colored("Result №  " + str(i) + ":", 'red', attrs=['reverse', 'blink']))
 
     """функции опроса слэйв устройств"""
-    #static_var.loadA()
-    #static_var.SS1.printer()
-    #static_var.SS2.printer()
-    #static_var.SS3.printer()
-    print(' ')
-
-    """функции опроса слэйв устройств"""
     modbus_Slave_001.loadA()
     modbus_Slave_002.loadA()
     modbus_Slave_001.S1_t1.printer()
@@ -47,7 +40,7 @@ def print_Data_001(i):
     print(' ')
 
     """запись в базу по условию 0 секунд точного времени"""
-    if time_now.second == 0:
+    if time_now.second == 0 or time_now.second == 30:
         MYsql.send_to_database()
     time.sleep(1)
 
@@ -57,7 +50,7 @@ def print_Data_001(i):
     #print_Data_001(i)
 
 i = 0
-for i in range(10):
+for i in range(1000):
     i = i + 1
     print_Data_001(i)
 
