@@ -40,11 +40,11 @@ def print_Data_001(i):
     if time_now.second == 0 or time_now.second == 30:
         MYsql.send_to_database()
 
-    """запись в базу по условию 15 b 45 секунд точного времени"""
-    if time_now.second == 15 or time_now.second == 45:
-        send_to_site.send_data_to_site()
+    """отправка на сервер 10 30 50 секунд точного времени"""
+    #if time_now.second == 10 or time_now.second == 30 or time_now.second == 50:
+    send_to_site.send_data_to_site()
 
-
+"""цикл функции"""
 i = 0
 while True:
     i = i + 1
