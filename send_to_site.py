@@ -47,7 +47,7 @@ def send_data_to_site():
         cl = (b'l')
         #c10 = str(modbus_Slave_002.S2_p1_q)
         c10 = str(10.0) + '\n'
-        #cq = (b'q') + '\n'
+        cq = (b'q')
         """Конвертируем в байты"""
         c1.encode('utf-8')
         c2.encode('utf-8')
@@ -102,7 +102,7 @@ def send_data_to_site():
         #sock.send(c0)
         sock.send(cl)
         sock.send(с_bytes10)
-        #sock.send(cq)
+        sock.send(cq)
 
         """Получение данных"""
         #data = sock.recv(4096)
