@@ -49,7 +49,7 @@ i = 0
 while True:
     i = i + 1
     print_Data_001(i)
-    time.sleep(1)
+    time.sleep(0.1)
 
 #i = 0
 #for i in range(10000):
