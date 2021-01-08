@@ -48,8 +48,10 @@ def print_Data_001(i):
 i = 0
 while True:
     i = i + 1
+    if i >= 1000000:
+        i = 0
     print_Data_001(i)
-    time.sleep(0.1)
+    time.sleep(0.5)
 
 #i = 0
 #for i in range(10000):
