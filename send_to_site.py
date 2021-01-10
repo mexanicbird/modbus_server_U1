@@ -46,7 +46,7 @@ def send_data_to_site():
         c9 = str(99.9) + '\n'
         cl = (b'l')
         #c10 = str(modbus_Slave_002.S2_p1_q)
-        c10 = str(10.5) + '\n'
+        c10 = str(10.7) + '\n'
         cq = (b'q')
         """Конвертируем в байты"""
         c1.encode('utf-8')
